@@ -7,8 +7,10 @@
 
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'cart-progress.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-progress.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 <style>
@@ -74,6 +76,7 @@
           </span>
         </button>
       </div>
+      {%- render 'cart-progress-bar' -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
