@@ -20,7 +20,7 @@ cart-drawer.is-empty .cart-progress {
   height: 0.8rem;
   border-radius: 9999px;
   background: rgba(var(--color-foreground), 0.12);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .cart-drawer .cart-progress__fill {
@@ -30,7 +30,7 @@ cart-drawer.is-empty .cart-progress {
   bottom: 0;
   width: 0%;
   border-radius: inherit;
-  background: rgb(var(--color-button));
+  background: rgba(var(--color-foreground), 0.9);
   transition: width var(--duration-default) ease;
   z-index: 1;
 }
