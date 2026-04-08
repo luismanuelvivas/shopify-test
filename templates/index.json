@@ -171,7 +171,7 @@
       "settings": {
         "collection": "frontpage",
         "products_to_show": 4,
-        "title": "Featured collection",
+        "title": "Our Products",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
