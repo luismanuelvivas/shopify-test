@@ -1439,6 +1439,12 @@
         "content": "t:settings_schema.cart.settings.cart_drawer.header"
       },
       {
+        "type": "product",
+        "id": "cart_progress_gift_product",
+        "label": "Free gift product",
+        "info": "Product to auto-add when cart reaches $200 for the cart drawer progress bar."
+      },
+      {
         "type": "collection",
         "id": "cart_drawer_collection",
         "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",

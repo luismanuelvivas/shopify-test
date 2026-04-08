@@ -1,0 +1,94 @@
+.cart-drawer .cart-progress {
+  padding: 0 0 1.5rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+cart-drawer.is-empty .cart-progress {
+  display: none;
+}
+
+.cart-drawer .cart-progress__message {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.cart-drawer .cart-progress__track {
+  position: relative;
+  height: 0.8rem;
+  border-radius: 9999px;
+  background: rgba(var(--color-foreground), 0.12);
+  overflow: visible;
+}
+
+.cart-drawer .cart-progress__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  border-radius: inherit;
+  background: rgb(var(--color-button));
+  transition: width var(--duration-default) ease;
+  z-index: 1;
+}
+
+.cart-drawer .cart-progress__checkpoint {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cart-drawer .cart-progress__dot {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-background));
+  transition: background var(--duration-default) ease, border-color var(--duration-default) ease;
+}
+
+.cart-drawer .cart-progress__dot.is-active {
+  background: rgb(var(--color-button));
+  border-color: rgb(var(--color-button));
+}
+
+.cart-drawer .cart-progress__labels {
+  position: relative;
+  height: 2rem;
+  margin-top: 0.9rem;
+}
+
+.cart-drawer .cart-progress__label {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: rgba(var(--color-foreground), 0.6);
+  white-space: nowrap;
+}
+
+.cart-drawer .cart-progress__label.is-active {
+  color: rgba(var(--color-foreground), 0.9);
+  font-weight: var(--font-body-weight-bold);
+}
+
+.cart-drawer .cart-progress__label[data-cart-progress-label='0'] {
+  left: 33.333%;
+}
+
+.cart-drawer .cart-progress__label[data-cart-progress-label='1'] {
+  left: 66.666%;
+}
+
+.cart-drawer .cart-progress__label[data-cart-progress-label='2'] {
+  left: 100%;
+}
