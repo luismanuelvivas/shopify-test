@@ -24,11 +24,15 @@ cart-drawer.is-empty .cart-progress {
 }
 
 .cart-drawer .cart-progress__fill {
-  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 0%;
-  border-radius: 9999px;
+  border-radius: inherit;
   background: rgb(var(--color-button));
   transition: width var(--duration-default) ease;
+  z-index: 1;
 }
 
 .cart-drawer .cart-progress__checkpoint {
@@ -36,6 +40,7 @@ cart-drawer.is-empty .cart-progress {
   top: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .cart-drawer .cart-progress__dot {
