@@ -124,6 +124,7 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
+    "cart_progress_gift_product": "vortex-precision-digital-scale",
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
     "sections": {
