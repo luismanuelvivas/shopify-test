@@ -1,9 +1,19 @@
+{%- assign cart_progress_gift_product = settings.cart_progress_gift_product -%}
+{%- if cart_progress_gift_product == blank -%}
+  {%- assign cart_progress_gift_product_handle = 'free-gift' -%}
+  {%- assign cart_progress_gift_product = all_products[cart_progress_gift_product_handle] -%}
+{%- endif -%}
+{%- assign cart_progress_gift_variant_id = 0 -%}
+{%- if cart_progress_gift_product and cart_progress_gift_product.available -%}
+  {%- assign cart_progress_gift_variant_id = cart_progress_gift_product.selected_or_first_available_variant.id -%}
+{%- endif -%}
+
 <div
   class="cart-progress"
   data-cart-progress
   data-thresholds="10000,15000,20000"
   data-max-threshold="20000"
-  data-gift-variant-id="0"
+  data-gift-variant-id="{{ cart_progress_gift_variant_id }}"
 >
   <p class="cart-progress__message" data-cart-progress-message></p>
   <div

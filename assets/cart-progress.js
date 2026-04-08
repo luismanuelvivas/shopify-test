@@ -62,11 +62,22 @@
       .reduce((sum, item) => sum + (item.final_line_price || 0), 0);
   }
 
+  function getGiftLineBasePrice(cart, giftVariantId) {
+    if (!giftVariantId || !cart?.items?.length) return 0;
+    return cart.items
+      .filter((item) => item.variant_id === giftVariantId)
+      .reduce((sum, item) => sum + (item.original_line_price || item.final_line_price || 0), 0);
+  }
+
   function computeView(cart, config) {
     const currency = cart?.currency || cart?.presentment_currency || 'USD';
-    const giftLinePrice = getGiftLinePrice(cart, config.giftVariantId);
+    const giftLineFinal = getGiftLinePrice(cart, config.giftVariantId);
+    const giftLineBase = getGiftLineBasePrice(cart, config.giftVariantId);
+
+    const baseCentsRaw = Number.isFinite(cart?.items_subtotal_price) ? cart.items_subtotal_price : cart?.total_price || 0;
     const totalCentsRaw = cart?.total_price || 0;
-    const totalCentsForThresholds = Math.max(0, totalCentsRaw - giftLinePrice);
+
+    const totalCentsForThresholds = Math.max(0, baseCentsRaw - giftLineBase);
 
     const progressRatio = Math.max(0, Math.min(1, totalCentsForThresholds / config.maxThreshold));
     const fillPercent = progressRatio * 100;
@@ -95,6 +106,8 @@
     return {
       currency,
       totalCentsForThresholds,
+      totalCentsRaw,
+      giftLineFinal,
       fillPercent,
       unlocked,
       message,
@@ -216,12 +229,12 @@
             try {
               await render();
             } catch (e) {
-              void e;
+              console.error(e);
             }
           }, 250);
         }
       } catch (e) {
-        void e;
+        console.error(e);
       } finally {
         state.renderQueued = false;
       }

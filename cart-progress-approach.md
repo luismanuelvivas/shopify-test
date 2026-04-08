@@ -50,15 +50,21 @@ Como el theme no puede “crear” productos, se asume que en el store existe un
 - Precio $0.00 (recomendado).
 - Inventario disponible.
 
-### Cómo configurar el variant_id del regalo
+### Cómo se identifica el regalo
 
-En `snippets/cart-progress-bar.liquid` hay un atributo:
+Primero, el theme permite seleccionar el producto regalo desde el Theme Editor (setting):
 
-- `data-gift-variant-id="0"`
+- `cart_progress_gift_product`
 
-Debes reemplazar ese `0` por el `variant_id` real del gift. Formas típicas de obtenerlo:
+Si está configurado, el progress bar obtiene su `selected_or_first_available_variant.id` y lo usa para auto-add/remove.
 
-- Admin → Products → abrir el producto regalo → ver la variante → tomar el ID desde la URL o desde la API/inspector.
+Si no está configurado, el snippet intenta resolver automáticamente el `variant_id` del regalo desde un producto con handle:
+
+- `free-gift`
+
+Si ese producto existe y está disponible, el progress bar obtiene su `selected_or_first_available_variant.id` y lo usa para auto-add/remove.
+
+Si no existe (o no está disponible), el `variant_id` queda en 0 y no se añadirá nada.
 
 ## Nota sobre el “20% off”
 
@@ -66,6 +72,7 @@ Este feature implementa el checkpoint y los mensajes/UI de “20% off”, pero *
 
 Opciones reales para automatizarlo:
 
+- Usar un Automatic Discount (por ejemplo, 20% con mínimo $150). Esto se aplica automáticamente en el carrito/checkout sin JS.
 - Usar un Discount Code (aplicación manual o por link directo).
 - Shopify Functions (si el plan/stack lo permite).
 - App / backend.
